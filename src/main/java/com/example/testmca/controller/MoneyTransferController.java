@@ -25,7 +25,7 @@ public class MoneyTransferController {
             @RequestParam("currency") String currency,
             @RequestParam("amount") String amount,
             @RequestParam("executionDate") String executionDate
-            ) {
+    ) {
         return moneyTransferService.sendMoney(accountId, receiverName, description, currency, amount, executionDate);
     }
 
@@ -34,7 +34,7 @@ public class MoneyTransferController {
             @RequestParam("accountId") Long accountId,
             @RequestParam("fromAccountingDate") String fromAccountingDate,
             @RequestParam("toAccountingDate") String toAccountingDate
-            ) {
+    ) {
         return moneyTransferService.getMoneyTransfer(accountId, fromAccountingDate, toAccountingDate);
     }
 }

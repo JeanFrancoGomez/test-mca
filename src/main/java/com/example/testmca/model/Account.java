@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,6 +12,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Setter
@@ -33,7 +36,7 @@ public class Account {
     @Column
     private Long cabCode;
 
-    @Column(nullable = false, length = 2, columnDefinition = "IT")
+    @Column(nullable = false, length = 2)
     private String countryCode;
 
     private Integer internationalCin;
@@ -62,12 +65,14 @@ public class Account {
     @Column
     private BigDecimal availableBalance;
 
-    @Column(nullable = false, length = 3, columnDefinition = "EUR")
+    @Column(nullable = false, length = 3)
     private String currency;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "customer_bank_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private CustomerBank customerBank;
 
     @Override
     public boolean equals(Object o) {

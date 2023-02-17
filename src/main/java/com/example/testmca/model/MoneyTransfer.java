@@ -16,53 +16,53 @@ import java.util.Objects;
 @Entity
 public class MoneyTransfer {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-  @Column(nullable = false)
-  private Customer creditor;
+    @Column(nullable = false)
+    private Long creditor;
 
-  @Column(nullable = false)
-  private Customer debtor;
+    @Column(nullable = false)
+    private Long debtor;
 
-  @Column
-  private LocalDateTime executionDate;
+    @Column
+    private LocalDateTime executionDate;
 
-  @Column
-  private String uri;
+    @Column
+    private String uri;
 
-  @Column
-  private String description;
+    @Column
+    private String description;
 
-  @Column
-  private BigDecimal amount;
+    @Column
+    private BigDecimal amount;
 
-  @Column(nullable = false, length = 3, columnDefinition = "EUR")
-  private String currency;
+    @Column(nullable = false, length = 3)
+    private String currency;
 
-  @Column
-  private Boolean isUrgent;
+    @Column
+    private Boolean isUrgent;
 
-  @Column
-  private Boolean isInstant;
+    @Column
+    private Boolean isInstant;
 
-  @Column
-  private String feeType;
+    @Column
+    private String feeType;
 
-  @Column
-  private Long feeAccountId;
+    @Column
+    private Long feeAccountId;
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    MoneyTransfer that = (MoneyTransfer) o;
-    return Objects.equals(id, that.id);
-  }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MoneyTransfer that = (MoneyTransfer) o;
+        return Objects.equals(id, that.id);
+    }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

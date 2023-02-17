@@ -37,7 +37,7 @@ public class MoneyTransferService {
         Account account = accountService.checkIfExistById(accountId);
         //TODO define where to take the current exchange rate from
         BigDecimal requestAmount = new BigDecimal(amount);
-        if(account.getBalance().compareTo(requestAmount) < 0)
+        if (account.getBalance().compareTo(requestAmount) < 0)
             new AmountException("code:API000, Errore tecnico La condizione BP049 non e' prevista per il conto id" + account.getAccountId());
     }
 
@@ -47,12 +47,12 @@ public class MoneyTransferService {
         if (!b)
             new BadRequestException("Date format is wrong");
         LocalDate localDate = LocalDate.parse(date);
-        if(localDate.isAfter(LocalDate.now()))
+        if (localDate.isAfter(LocalDate.now()))
             new BadRequestException("The date has passed");
     }
 
     public TransferSummaryDto sendMoney(Long accountId, String receiverName, String description, String currency, String amount, String executionDate) {
-        checkIfAmountIsEnough(accountId,currency,amount);
+        checkIfAmountIsEnough(accountId, currency, amount);
         checkData(executionDate);
         //TODO Finire implementazione chiamando servizio di Fabrik e passando i parametri
         return null;
@@ -64,7 +64,7 @@ public class MoneyTransferService {
         return null;
     }
 
-    private String useAPIFabrik(){
+    private String useAPIFabrik() {
         RestTemplate restTemplate = new RestTemplate();
         String baseUrl = "";
         return restTemplate

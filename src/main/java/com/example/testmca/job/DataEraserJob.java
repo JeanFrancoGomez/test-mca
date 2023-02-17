@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataEraserJob {
 
-  @Scheduled(cron = "${job.delete-data}", zone = "Europe/Rome")
-  public void eraseData() {
-  }
+    @Scheduled(cron = "${job.delete-data}", zone = "Europe/Rome")
+    public void eraseData() {
+    }
 }
