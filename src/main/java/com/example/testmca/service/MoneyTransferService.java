@@ -25,13 +25,16 @@ import java.util.List;
 @Log
 public class MoneyTransferService {
 
-    @Autowired
     private AccountService accountService;
+    private MoneyTransferRepository moneyTransferRepository;
+    private AccountMapper accountMapper;
 
     @Autowired
-    private MoneyTransferRepository moneyTransferRepository;
-    @Autowired
-    private AccountMapper accountMapper;
+    public MoneyTransferService(AccountService accountService, MoneyTransferRepository moneyTransferRepository, AccountMapper accountMapper) {
+        this.accountService = accountService;
+        this.moneyTransferRepository = moneyTransferRepository;
+        this.accountMapper = accountMapper;
+    }
 
     private void checkIfAmountIsEnough(Long accountId, String currency, String amount) {
         Account account = accountService.checkIfExistById(accountId);

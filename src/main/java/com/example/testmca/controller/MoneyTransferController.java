@@ -14,8 +14,12 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class MoneyTransferController {
 
-    @Autowired
     private MoneyTransferService moneyTransferService;
+
+    @Autowired
+    public MoneyTransferController(MoneyTransferService moneyTransferService) {
+        this.moneyTransferService = moneyTransferService;
+    }
 
     @PostMapping
     public TransferSummaryDto sendMoney(

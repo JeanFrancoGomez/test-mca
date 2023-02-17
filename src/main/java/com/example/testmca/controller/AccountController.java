@@ -15,8 +15,12 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class AccountController {
 
-    @Autowired
     private AccountService accountService;
+
+    @Autowired
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
+    }
 
     @GetMapping("{accountId}")
     public CashAccountDto getCashAccount(@PathVariable("accountId") Long accountId) {

@@ -13,10 +13,14 @@ import org.springframework.stereotype.Component;
 @Log
 public class AccountService {
 
-    @Autowired
     private AccountRepository accountRepository;
-    @Autowired
     private AccountMapper accountMapper;
+
+    @Autowired
+    public AccountService(AccountRepository accountRepository, AccountMapper accountMapper) {
+        this.accountRepository = accountRepository;
+        this.accountMapper = accountMapper;
+    }
 
     public Account checkIfExistById(Long accountId) {
         return accountRepository.findById(accountId).orElseThrow(

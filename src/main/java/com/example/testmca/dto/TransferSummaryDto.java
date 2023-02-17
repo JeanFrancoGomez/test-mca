@@ -9,7 +9,7 @@ public class TransferSummaryDto {
     private Long moneyTransferId;
     private String status;
     private AccountDto accountDto;
-    private CustomerDto customerDto;
+    private CustomerBankDto customerBankDto;
 
     //"moneyTransferId": "452516859427",
     //  "status": "EXECUTED",
